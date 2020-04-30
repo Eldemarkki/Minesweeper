@@ -55,8 +55,8 @@ namespace Minesweeper
                 }
                 else if (command == "flag")
                 {
-                    int x = int.Parse(commandArgs[1]);
-                    int y = int.Parse(commandArgs[2]);
+                    int x = int.Parse(commandArgs[1]) - 1;
+                    int y = int.Parse(commandArgs[2]) - 1;
                     game.Flag(x, y);
                     game.Print();
                 }

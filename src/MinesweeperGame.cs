@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Minesweeper
 {
@@ -98,7 +97,7 @@ namespace Minesweeper
 
         public void Open(int x, int y, out bool wasBombTile)
         {
-            if(board[x,y].IsHidden == false)
+            if (board[x, y].IsHidden == false)
             {
                 wasBombTile = false;
                 return;
@@ -143,17 +142,17 @@ namespace Minesweeper
                 for (int x = 0; x < board.GetLength(0); x++)
                 {
                     Tile tile = board[x, y];
-                    if (tile.IsFlagged)
+                    if (!tile.IsHidden)
+                    {
+                        Console.Write(tile);
+                    }
+                    else if (tile.IsFlagged)
                     {
                         Console.Write("F");
                     }
                     else if (tile.IsHidden)
                     {
                         Console.Write("O");
-                    }
-                    else
-                    {
-                        Console.Write(tile);
                     }
                 }
                 Console.WriteLine("");

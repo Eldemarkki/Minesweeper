@@ -16,8 +16,8 @@ namespace Minesweeper
                 string command = commandArgs[0].ToLower().Trim();
                 if (command == "open")
                 {
-                    int x = int.Parse(commandArgs[1]);
-                    int y = int.Parse(commandArgs[2]);
+                    int x = int.Parse(commandArgs[1]) - 1;
+                    int y = int.Parse(commandArgs[2]) - 1;
                     Tile tile = game.GetTile(x, y);
                     if (tile.IsFlagged)
                     {

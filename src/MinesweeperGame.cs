@@ -123,7 +123,7 @@ namespace Minesweeper
 
         public void Print()
         {
-            for (int y = 0; y < board.GetLength(1); y++)
+            for (int y = board.GetLength(1) - 1; y >= 0; y--)
             {
                 for (int x = 0; x < board.GetLength(0); x++)
                 {

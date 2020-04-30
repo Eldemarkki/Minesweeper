@@ -98,6 +98,12 @@ namespace Minesweeper
 
         public void Open(int x, int y, out bool wasBombTile)
         {
+            if(board[x,y].IsHidden == false)
+            {
+                wasBombTile = false;
+                return;
+            }
+
             board[x, y].IsHidden = false;
             if (board[x, y] is BombTile)
             {
@@ -107,6 +113,15 @@ namespace Minesweeper
             }
             else
             {
+                if (((NumberTile)board[x, y]).BombCount == 0)
+                {
+                    List<Tile> floodFillTiles = FloodFill.FloodFillArea(x, y, board, t => (t is NumberTile nt) && nt.BombCount == 0);
+                    foreach (Tile tile in floodFillTiles)
+                    {
+                        tile.IsHidden = false;
+                    }
+                }
+
                 wasBombTile = false;
             }
         }
